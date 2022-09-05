@@ -1,0 +1,22 @@
+name: debug
+
+on:
+  push:
+
+jobs:
+  with_empty_webhook_url:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: slackapi/slack-github-action@v1.21.0
+        env:
+          SLACK_WEBHOOK_URL: ""
+
+  with_empty_bot_token:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: slackapi/slack-github-action@v1.21.0
+        with:
+          channel-id: "#foo"
+          slack-message: "bar"
+        env:
+          SLACK_BOT_TOKEN: ""
